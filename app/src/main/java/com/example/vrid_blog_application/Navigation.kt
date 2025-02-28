@@ -14,12 +14,9 @@ fun BlogApp() {
     val blogViewModel: BlogViewModel = viewModel()
 
     NavHost(navController = navController, startDestination = "list") {
-        // Blog List Screen
         composable("list") {
             BlogListScreen(navController, blogViewModel)
         }
-
-        // Blog Detail Screen (WebView)
         composable("detail/{url}") { entry ->
             val blogUrl = entry.arguments?.getString("url") ?: ""
             BlogDetailScreen(navController, Uri.decode(blogUrl))  // Decoding URL
